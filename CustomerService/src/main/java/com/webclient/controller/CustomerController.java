@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController {
@@ -26,5 +28,8 @@ public class CustomerController {
         public ResponseEntity<Customer> getCustomerById (@PathVariable Long id){
             return ResponseEntity.ok(customerService.getCustomerById(id));
         }
-
+    @GetMapping("/all")
+    public List<Customer> getAllCustomers() {
+        return customerService.getAllCustomers(); // returns Flux
+    }
 }
