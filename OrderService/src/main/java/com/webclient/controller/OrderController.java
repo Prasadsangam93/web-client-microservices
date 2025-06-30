@@ -20,6 +20,11 @@ public class OrderController {
         this.orderService = orderService;
     }
 
+
+    @PostMapping("/place/{customerId}")
+    public ResponseEntity<OrderResponse> placeOrder(@PathVariable Long customerId) {
+        return ResponseEntity.ok(orderService.placeOrder(customerId));
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomerId(@PathVariable Long id) {
         return ResponseEntity.ok(orderService.getCustomerById(id));
